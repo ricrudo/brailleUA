@@ -1,0 +1,19 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.DS_Store
+.python-version
+midi_export.MID
+salida.brf
+testxml.musicxml
+title_cancion.musicxml
+title_cancion.mxl
+title_cancion.xml
+title_midi_composer_reaper.musicxml
