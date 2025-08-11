@@ -8,14 +8,14 @@ Este script permite convertir un archivo **MusicXML** (o MXL / MusicXML comprimi
 2. Desde la terminal, ejecuta:
 
 ```bash
-python xml_a_brf_music21.py archivo_origen
+python main.py archivo_origen
 ```
 
 > **Ejemplo**
 > Si tu archivo se llama `title_sonata_composer_bach.mxl`:
 >
 > ```bash
-> python xml_a_brf_music21.py title_sonata_composer_bach.mxl
+> python main.py title_sonata_composer_bach.mxl
 > ```
 >
 > Esto generará automáticamente `title_sonata_composer_bach.brf` en la misma carpeta.
