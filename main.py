@@ -43,7 +43,7 @@ def add_title_and_composer(output_brf:str, input_xml:str):
     print(f"Listo: {output_brf} con title {title} y composer {title}")
 
 
-def musicxml_to_brf(input_xml: str, output_brf: str, max_line_len: int = 40):
+def musicxml_to_brf(input_xml: str, max_line_len: int = 40):
     # 1) Abrir MusicXML
     s = converter.parse(input_xml)
     
@@ -63,16 +63,20 @@ def musicxml_to_brf(input_xml: str, output_brf: str, max_line_len: int = 40):
         maxLineLength=max_line_len,   # ancho de línea típico para BRF
         inPlace=False,                # aplica makeNotation() internamente
     )
+    
+    input_path = Path(input_xml)
+    output_brf = input_path.parent / f"{input_path.stem}.brf"
+
 
     # 3) Pasar a ASCII braille (compatible BRF) y guardar .brf
     b_ascii = braille.basic.brailleUnicodeToBrailleAscii(b_unicode)
-    Path(output_brf).write_text(b_ascii, encoding="ascii", errors="replace")
+    output_brf.write_text(b_ascii, encoding="ascii", errors="replace")
     print(f"Listo: {output_brf}")
 
     add_title_and_composer(output_brf, input_xml)
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
+    if len(sys.argv) < 2:
         print("Uso: python xml_a_brf_music21.py entrada.musicxml salida.brf")
         sys.exit(1)
-    musicxml_to_brf(sys.argv[1], sys.argv[2])
+    musicxml_to_brf(sys.argv[1])
